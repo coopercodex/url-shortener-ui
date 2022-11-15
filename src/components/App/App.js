@@ -25,15 +25,22 @@ export class App extends Component {
   }
 
   addUrl = (newUrl) => {
-    this.setState({urls: [...this.state.urls, newUrl]})
+    fetch('http://localhost:3001/api/v1/urls', {
+      method: 'POST', 
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(newUrl)
+    })
+    .then(response => response.json())
+    .then(response => this.setState({urls: [...this.state.urls, response]}))
   }
+  
 
   render() {
     return (
       <main className="App">
         <header>
           <h1>URL Shortener</h1>
-          <UrlForm addUrl={this.addUrl} urls={this.state.urls} />
+          <UrlForm addUrl={this.addUrl}  />
         </header>
         <UrlContainer urls={this.state.urls}/>
       </main>

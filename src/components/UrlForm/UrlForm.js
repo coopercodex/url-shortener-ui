@@ -22,15 +22,15 @@ class UrlForm extends Component {
       title: this.state.title
     }
     this.props.addUrl(newUrl)
-    // this.clearInputs()
-    fetch('http://localhost:3001/api/v1/urls', {
-      method: 'POST', 
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(newUrl)
-    })
-    .then(response => response.json())
-    .then(response => this.setState({urls: [...this.props.urls, response]}))
-    // window.location.reload()
+    this.clearInputs()
+  //   fetch('http://localhost:3001/api/v1/urls', {
+  //     method: 'POST', 
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify(newUrl)
+  //   })
+  //   .then(response => response.json())
+  //   .then(response => this.setState({urls: [...this.props.urls, response]}))
+  //   // window.location.reload()
   }
 
   clearInputs = () => {
